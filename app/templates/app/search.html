@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+{% block title %} Search Results {% endblock title %}
+
+{% block search %}
+<div class="container my-3">
+    <h2>Search results : </h2>
+        {% if products|length < 1 %} <p>No search results</p>
+        Your search query : <b>{{query}}</b> did not match any documents. <br>
+        Suggestions:
+        <ul>
+            <li>Make sure that all words are spelled correctly.</li>
+            <li>Try more general keywords.</li>
+            <li> Try fewer keywords.</li>
+            <li> Try different keywords.</li>
+            </li>
+        </ul>
+        {% endif %}
+        {% for product in products %}
+        <article class="entry">
+            <div class="entry-img">
+                <img src="/media/{{product.image}}" alt="{{ product.title }}" class="img-fluid">
+            </div>
+            <h2 class="entry-title">
+                <a href="{{product.product.url}}">{{product.title}}</a>
+            </h2>
+            <div class="entry-meta">
+                <ul>                   
+                     
+                    <li class="d-flex align-items-center">Selling Price: {{product.selling_price}}</li>
+                    <li class="d-flex align-items-center">Discounted Price: </i>{{product.discounted_price}}</li>                    
+                    <li class="d-flex align-items-center">Brand: </i>{{product.brand}}</li>
+                    <li class="d-flex align-items-center">Category: {{product.category}}</li>
+                    
+                </ul>
+            </div>
+            <div class="entry-content">
+                <p>
+                    {{product.description|safe|slice:500}}
+                </p>
+                <div class="read-more">
+                    <a href="{{product.product.url}}">Read More</a>
+                </div>
+            </div>
+        </article><!-- End blog entry -->
+        <hr>
+        {% endfor %}
+</div>
+{% endblock search %}
