@@ -27,7 +27,8 @@ SECRET_KEY = '-t5k8oau0tvom==xexaz!4i5xdjqb$a^37t32hwn6w%5j5*18w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['eshopping.herokuapp.com', 'localhost']
+# ALLOWED_HOSTS = ['eshopping.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
